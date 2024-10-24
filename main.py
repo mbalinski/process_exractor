@@ -1,8 +1,20 @@
+ # This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>
+
 import re
 import PyPDF2
 import networkx as nx
 import matplotlib.pyplot as plt
-
 
 # PDF to text conversion function
 def convert_pdf_to_text(pdf_file_path):
@@ -13,7 +25,6 @@ def convert_pdf_to_text(pdf_file_path):
             page = pdf_reader.pages[page_num]
             text += page.extract_text()
     return text
-
 
 # Patterns for chapters, articles, and subpoints
 chapter_pattern = r'(Rozdział \d+)'
@@ -57,7 +68,7 @@ def fragment_text(text):
     current_article = None  # Track the current article context
 
     expected_chapter_number = 1  # Start from Rozdział 1
-    expected_article_number = 1  # Start from Art. 1
+    expected_article_number = 1  # Start from Art. 1.
 
     for chapter in chapters:
         if chapter.strip():
@@ -322,5 +333,5 @@ def process_pdf(pdf_file_path):
 
 
 # Test with the provided PDF file
-pdf_file_path = 'main_test.pdf'
+pdf_file_path = 'pdf_files/main_test.pdf'
 process_pdf(pdf_file_path)
